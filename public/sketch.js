@@ -1,10 +1,10 @@
-/**
- * Created by jackgilbert on 03/09/2016.
- */
+var x = 0;
+
 function setup() {
-  
+  createCanvas(600, 400);
 }
 
-function draw () {
-  ellipse(50,50,80,80);
+function draw() {
+  ellipse(x, height/2,20,20);
+  x = x + 1;
 }
