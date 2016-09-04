@@ -1,10 +1,6 @@
-/**
- * Created by jackgilbert on 04/09/2016.
- */
-var balls = [];
-
 function setup () {
   createCanvas(720,400)
+  var balls = [];
   //add an inital set of balls into the system
   for (var i = 0; i < 100; i ++){
     balls[i] = new Ball(random(width), random(height));

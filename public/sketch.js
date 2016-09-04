@@ -1,10 +1,13 @@
-var x = 0;
+var sketch = function(s) {
 
-function setup() {
-  createCanvas(600, 400);
-}
 
-function draw() {
-  ellipse(x, height/2,20,20);
-  x = x + 1;
-}
+  function s.setup(){
+    s.createCanvas(600, 400);
+  }
+
+  function s.draw(){
+    s.ellipse(x, height / 2, 20, 20);
+    s.x = x + 1;
+  }
+};
+
