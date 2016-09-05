@@ -10,7 +10,7 @@ var song = [
   { note: 3, duration: 200, display: "C" },
   { note: 4, duration: 400, display: "D" },
   { note: 0, duration: 400, display: "G" },
-  { note: 0, duration: 400, display: "G" },
+  { note: 0, duration: 400, display: "G" }
 ];
 
 var trigger = 0;
@@ -81,7 +81,6 @@ function draw () {
     if (autoplay && i === song[index-1].note) {
       fill(100,255,200);
     }
-
     // Draw the key
     rect(x, 0, w-1, height-1);
   }
