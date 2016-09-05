@@ -1,24 +1,29 @@
-function setup() {
-  // Create the canvas
-  createCanvas(720, 400);
-  background(200);
+var shapes = function(a) {
 
-  // Set colors
-  fill(204, 101, 192, 127);
-  stroke(127, 63, 120);
+  function setup() {
+    // Create the canvas
+    a.createCanvas(720, 400);
+    a.background(200);
 
-  // A rectangle
-  rect(40, 120, 120, 40);
-  // An ellipse
-  ellipse(240, 240, 80, 80);
-  // A triangle
-  triangle(300, 100, 320, 100, 310, 80);
+    // Set colors
+    a.fill(204, 101, 192, 127);
+    a.stroke(127, 63, 120);
 
-  // A design for a simple flower
-  translate(580, 200);
-  noStroke();
-  for (var i = 0; i < 10; i ++) {
-    ellipse(0, 30, 20, 50);
-    rotate(PI/5);
+    // A rectangle
+    a.rect(40, 120, 120, 40);
+    // An ellipse
+    a.ellipse(240, 240, 80, 80);
+    // A triangle
+    a.triangle(300, 100, 320, 100, 310, 80);
+
+    // A design for a simple flower
+    a.translate(580, 200);
+    a.noStroke();
+    for (var i = 0; i < 10; i++) {
+      a.ellipse(0, 30, 20, 50);
+      a.rotate(PI / 5);
+    }
   }
-}
+};
+
+var shapesP5 =  new p5(shapes, 'htmlShapes');

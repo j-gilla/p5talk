@@ -1,4 +1,4 @@
-function randCricvariables () {
+var randCirch = function (r) {
 
   var r, g, b;
   var slider;
@@ -44,5 +44,6 @@ function randCricvariables () {
 
     }
   }
-}
-randCricvariables()
+};
+
+var randCric_5 = new p5(randCric, 'htmlRandCirc');
