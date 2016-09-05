@@ -19,7 +19,7 @@ var osc;
 
 function setup() {
   createCanvas(720, 400);
-  var button = createA("#", "button")
+  var button = createButton("Play");
     //trigger automatically playing
     button.mousePressed(function(){
       if(!autoplay) {
