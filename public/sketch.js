@@ -1,14 +1,13 @@
 var sketch = function(s) {
 
 
-  function setup(){
-    s.createCanvas(600, 400);
+  s.setup = function () {
+    s.createCanvas(600, 400)
   }
 
-  function draw(){
-    s.ellipse(x, height / 2, 20, 20);
-    s.x = x + 1;
+  s.draw = function () {
+    s.ellipse(200, 200, 200, 200);
   }
-};
 
-var sketchP5 = new p5(sketch,'htmlSketch');
+}
+var p5Sketch = new p5(sketch,'htmlSketch');
