@@ -16,7 +16,7 @@ var randCirc = function (r) {
     r.g = r.random(255);
     r.b = r.random(255);
 
-    r.colorMode(HSB, 255);
+    r.colorMode(r.HSB, 255);
     r.slider = r.createSlider(0, 255, 127);
   }
 
@@ -40,9 +40,9 @@ var randCirc = function (r) {
     r.d = r.dist(r.mouseX, r.mouseY, 360, 200);
     if (r.d < 100) {
       // Pick new random color values
-      r.r = random(255);
-      r.g = random(255);
-      r.b = random(255);
+      r.r = r.random(255);
+      r.g = r.random(255);
+      r.b = r.random(255);
     }
 
   }

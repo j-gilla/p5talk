@@ -1,57 +1,59 @@
 var audioviz = function (av) {
 
 
-  var soundtrack;
-  var playbutton, stopbutton;
-  var analyzer;
+  av.soundtrack;
+  av.playbutton;
+  av.stopbutton;
+  av.analyzer;
 
-  function preload() {
-    soundtrack = loadSound('air.mp3');
+  av.preload = function() {
+    av.soundtrack = av.loadSound('air.mp3');
   }
 
-  function setup() {
-    createCanvas(400, 400);
+  av.setup = function() {
+    av.createCanvas(400, 400);
 
 
     // stop sound to prevent it from playing automatically
-    soundtrack.stop();
+    av.soundtrack.stop();
 
     // play button
-    playbutton = createButton('Play');
-    playbutton.position(25, 25);
-    playbutton.mousePressed(playsound);
+    av.playbutton = av.createButton('Play');
+    av.playbutton.position(25, 2500);
+    av.playbutton.mousePressed(av.playsound);
 
     // stop button
-    stopbutton = createButton('Stop');
-    stopbutton.position(75, 25);
-    stopbutton.mousePressed(stopsound);
+    av.stopbutton = av.createButton('Stop');
+    av.stopbutton.position(75, 2500);
+    av.stopbutton.mousePressed(av.stopsound);
 
     // music visualizer
-    analyzer = new p5.Amplitude();
-    analyzer.setInput(soundtrack);
+    av.analyzer = new p5.Amplitude();
+    av.analyzer.setInput(av.soundtrack);
   }
 
-  function draw() {
-    background(255);
+ av.draw = function() {
+    av.background(255);
 
     // draw an ellipse based on current volume level
-    var vol = analyzer.getLevel();
-    noStroke();
-    fill(255, 0, 0);
-    ellipse(width / 2, height / 2, map(vol, 0, 1, 0, width), map(vol, 0, 1, 0, height));
+    av.vol = av.analyzer.getLevel();
+    av.noStroke();
+    av.fill(255, 0, 0);
+    av.ellipse(av.width / 2, av.height / 2, av.map(av.vol, 0, 1, 0, av.width), av.map(av.vol, 0, 1, 0, av.height));
 
   }
 
-  function playsound() {
-    if (soundtrack.isPlaying() == false) {
-      soundtrack.play();
+  av.playsound = function() {
+    if (av.soundtrack.isPlaying() == false) {
+      av.soundtrack.play();
     }
   }
 
-  function stopsound() {
-    if (soundtrack.isPlaying() == true) {
-      soundtrack.pause();
+   av.stopsound = function() {
+    if (av.soundtrack.isPlaying() == true) {
+      av.soundtrack.pause();
     }
   }
-
 }
+
+var p5Audioviz = new p5(audioviz,'htmlAudioviz');

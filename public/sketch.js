@@ -6,7 +6,7 @@ var sketch = function(s) {
   };
 
   s.draw = function() {
-    s.ellipse(200, 200, 200, 200);
+    s.ellipse(320, 240, 200, 200);
   };
 
 }
