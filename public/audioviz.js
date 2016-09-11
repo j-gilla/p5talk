@@ -36,29 +36,29 @@ var audioviz = function (av) {
 
   av.draw = function () {
     //colors
-    av.r = av.random(255);
-    av.g = av.random(255);
-    av.b = av.random(0);
+    av.r = av.random(255,0,0,100);
+    av.g = av.random(255,0,0,100);
+    av.b = av.random(0,0,0,100);
     av.background(255);
 
     // draw an ellipse based on current volume level
     av.vol = av.analyzer.getLevel();
     av.noStroke();
     av.fill(av.r, av.g, av.b);
-    // av.ellipse(av.width / 2, av.height / 2, av.map(av.vol, 0, 1, 0, av.width), av.map(av.vol, 0, 1, 0, av.height));
-    // av.ellipse(av.random(0,av.width / 2 ), av.random(0,av.height /2), av.map(av.vol, 0, 1, 0, av.width), av.map(av.vol, 0, 1, 0, av.height));
-    // av.ellipse(av.random(0,av.width/ 2), av.random(0,av.height/2), av.map(av.vol, 0, 1, 0, av.width), av.map(av.vol, 0, 2, 0, av.height));
-    // av.ellipse(av.random(0,av.width/2), av.random(0,av.height/2), av.map(av.vol, 0, 1, 0, av.width), av.map(av.vol, 0, 2, 0, av.height));
+
+
+
+
     av.ellipse(av.width / 2, av.height / 2, av.map(av.vol, 0, 1, 0, av.width), av.map(av.vol, 0, 1, 0, av.height));
     av.ellipse(200, 200, av.map(av.vol, 0, 1, 0, av.width), av.map(av.vol, 0, 1, 0, av.height));
+    av.ellipse(100, 100, av.map(av.vol, 0, 1, 0, av.width), av.map(av.vol, 0, 1, 0, av.height));
+    av.ellipse(500, 250, av.map(av.vol, 0, 1, 0, av.width), av.map(av.vol, 0, 1, 0, av.height));
     av.ellipse(500, 400, av.map(av.vol, 0, 1, 0, av.width), av.map(av.vol, 0, 1, 0, av.height));
     av.ellipse(300, 350, av.map(av.vol, 0, 1, 0, av.width), av.map(av.vol, 0, 1, 0, av.height));av.ellipse(350, 100, av.map(av.vol, 0, 1, 0, av.width), av.map(av.vol, 0, 1, 0, av.height));
     av.ellipse(450, 90, av.map(av.vol, 0, 1, 0, av.width), av.map(av.vol, 0, 1, 0, av.height));
     av.ellipse(100, 400, av.map(av.vol, 0, 1, 0, av.width), av.map(av.vol, 0, 1, 0, av.height));av.ellipse(350, 100, av.map(av.vol, 0, 1, 0, av.width), av.map(av.vol, 0, 1, 0, av.height));
 
-    // bad av.ellipse(av.width / 3, av.height / 9, av.map(av.vol, 0, 1, 0, av.width), av.map(av.vol, 0, 5, 0, av.height));
-    //  bad - av.ellipse(av.width / 6, av.height / 3, av.map(av.vol, 0, 10, 0, av.width), av.map(av.vol, 0, 1, 0, av.height));
-    // av.ellipse(av.width / 4, av.height / 10, av.map(av.vol, 0, 1, 0, av.width), av.map(av.vol, 0, 1, 0, av.height));
+
 
   }
 
