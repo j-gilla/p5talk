@@ -7,7 +7,7 @@ var randCirc = function (r) {
  r.setup = function() {
 
 
-   r.createCanvas(720, 400);
+   r.createCanvas(640, 480);
 
 
     //Pick random colours
@@ -25,21 +25,21 @@ var randCirc = function (r) {
 
     //Draw a click circle
     r.strokeWeight(2);
-    r.stroke(r, g, b);
-    r.fill(r, g, b, 127);
-    r.ellipse(560, 200, 200, 200);
+    r.stroke(r.r, r.g, r.b);
+    r.fill(r.r, r.g, r.b, 127);
+    r.ellipse(460, 200, 200, 200);
 
     //draw a slider circle
-    r.stroke(slider.value(), 255, 255);
-    r.fill(slider.value(), 255, 255, 127);
-    r.ellipse(260, 200, 200, 200);
+    r.stroke(r.slider.value(), 255, 255);
+    r.fill(r.slider.value(), 255, 255, 127);
+    r.ellipse(200, 200, 200, 200);
   }
 
 //when user clicks the mouse
    r.mousePressed = function() {
     //check if mouse is inside the circle
     r.d = dist(r.mouseX, r.mouseY, 560, 200);
-    if (d < 100) {
+    if (r.d < 100) {
       r.r = random(255);
       r.g = random(255);
       r.b = random(255);
