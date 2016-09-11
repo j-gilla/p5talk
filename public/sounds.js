@@ -1,9 +1,9 @@
 var sounds = function (m) {
 
 // the midi notes of a scale
-  this.notes = [60, 62, 64, 65, 67, 69, 71, 74];
+  m.notes = [60, 62, 64, 65, 67, 69, 71, 74];
 
-  this.index = 0;
+  m.index = 0;
   m.song = [
     {note: 4, duration: 400, display: "D"},
     {note: 0, duration: 200, display: "G"},
@@ -55,7 +55,7 @@ var sounds = function (m) {
     //if we are autoplaying and it's time of the next note
 
     if (m.autoplay && m.millis() > m.trigger) {
-      m.playNote(this.m.notes[m.song[m.index].note], this.m.song[m.index].duration);
+      m.playNote(m.notes[m.song[m.index].note], m.song[m.index].duration);
       trigger = m.millis() + m.song[m.index].duration;
       //move to the next note
       m.index++;
@@ -66,8 +66,8 @@ var sounds = function (m) {
     //draw a keyboard
 
     //the width for each key
-    var w = m.width / this.notes.length;
-    for (var i = 0; i < this.notes.length; i++) {
+    var w = m.width / m.notes.length;
+    for (var i = 0; i < m.notes.length; i++) {
       var x = i * w;
       // If the mouse is over the key
       if (m.mouseX > x && m.mouseX < x + w && m.mouseY < m.height) {
