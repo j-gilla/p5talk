@@ -13,7 +13,7 @@ var flocks = function (B) {
   }
 
   B.draw = function () {
-    B.background(51);
+    B.background(209, 78);
     // Run all the balls
     for (var i = 0; i < balls.length; i++) {
       balls[i].run(balls);
@@ -85,8 +85,8 @@ var flocks = function (B) {
 
 // Draw boid as a circle
   B.Ball.prototype.render = function () {
-    B.fill(127, 127);
-    B.stroke(200);
+    B.fill(257,49,100,200);
+    B.stroke(223,65,100,200);
     B.ellipse(this.position.x, this.position.y, 16, 16);
   }
 
