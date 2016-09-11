@@ -1,18 +1,18 @@
-var simpledraw = function(sd) {
+var simpleDraw = function(k){
 
-
-  sd.setup = function () {
-    sd.createCanvas(640, 480);
-  };
-
-  sd.draw = function () {
-    if (sd.mouseIsPressed) {
-      sd.fill(0);
-    } else {
-      sd.fill(255);
-    }
-    sd.ellipse(sd.mouseX, sd.mouseY, 80, 80);
+   k.setup =function() {
+    k.createCanvas(640, 480);
   }
-};
 
-var p5SimpleDraw = new p5(simpledraw, 'htmlSimpleDraw');
+   k.draw = function() {
+    if (k.mouseIsPressed) {
+      k.fill(0);
+    } else {
+      k.fill(255);
+    }
+    k.ellipse(k.mouseX, k.mouseY, 80, 80);
+  }
+}
+
+
+var p5SimpleDraw = new p5(simpleDraw, 'htmlSimpleDraw');

@@ -1,6 +1,6 @@
 var shapes = function(a) {
 
-  function setup() {
+   a.setup = function() {
     // Create the canvas
     a.createCanvas(720, 400);
     a.background(200);
@@ -21,7 +21,7 @@ var shapes = function(a) {
     a.noStroke();
     for (var i = 0; i < 10; i++) {
       a.ellipse(0, 30, 20, 50);
-      a.rotate(PI / 5);
+      a.rotate(a.PI / 5);
     }
   }
 };

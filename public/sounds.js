@@ -1,104 +1,110 @@
+var sounds = function (m) {
+
 // the midi notes of a scale
-var notes = [60, 62, 64, 65, 67, 69, 71, 74];
+  this.notes = [60, 62, 64, 65, 67, 69, 71, 74];
 
-var index = 0;
-var song = [
-  { note: 4, duration: 400, display: "D" },
-  { note: 0, duration: 200, display: "G" },
-  { note: 1, duration: 200, display: "A" },
-  { note: 2, duration: 200, display: "B" },
-  { note: 3, duration: 200, display: "C" },
-  { note: 4, duration: 400, display: "D" },
-  { note: 0, duration: 400, display: "G" },
-  { note: 0, duration: 400, display: "G" }
-];
+  this.index = 0;
+  m.song = [
+    {note: 4, duration: 400, display: "D"},
+    {note: 0, duration: 200, display: "G"},
+    {note: 1, duration: 200, display: "A"},
+    {note: 2, duration: 200, display: "B"},
+    {note: 3, duration: 200, display: "C"},
+    {note: 4, duration: 400, display: "D"},
+    {note: 0, duration: 400, display: "G"},
+    {note: 0, duration: 400, display: "G"}
+  ];
 
-var trigger = 0;
-var autoplay = false;
-var osc;
+  m.trigger = 0;
+  m.autoplay = false;
+  m.osc;
 
-function setup() {
-  createCanvas(720, 400);
-  var button = createButton("Play");
-  button.position(25, 410);
+  m.setup = function() {
+    m.createCanvas(720, 400);
+    m.button = m.createButton("Play");
+    m.button.position(25, 410);
 
-  //trigger automatically playing
-    button.mousePressed(function(){
-      if(!autoplay) {
-        index = 0;
-        autoplay = true;
+    //trigger automatically playing
+    m.button.mousePressed(function () {
+      if (!m.autoplay) {
+        m.index = 0;
+        m.autoplay = true;
       }
     });
-  // a triangel oscillator
-  osc = new p5.TriOsc();
-  osc.start();
-  osc.amp(0);
-}
+    // a triangel oscillator
+    m.osc = new p5.TriOsc();
+    m.osc.start();
+    m.osc.amp(0);
+  }
 
 // A function to play a note
-function playNote(note, duration) {
-  osc.freq(midiToFreq(note));
-  // Fade it in
-  osc.fade(0.5,0.2);
+   m.playNote = function(note, duration) {
+    m.osc.freq(m.midiToFreq(m.note));
+    // Fade it in
+    m.osc.fade(0.5, 0.2);
 
-  // If we sest a duration, fade it out
-  if (duration) {
-    setTimeout(function() {
-      osc.fade(0,0.2);
-    }, duration-50);
-  }
-}
-
-function draw () {
-  //if we are autoplaying and it's time of the next note
-  if (autoplay && millis() > trigger){
-    playNote(notes[song[index].note], song[index].duration);
-    trigger = millis() + song[index].duration;
-    //move to the next note
-    index ++;
-  } else if (index >= song.length){
-   autoplay = false;
+    // If we sest a duration, fade it out
+    if (duration) {
+      setTimeout(function () {
+        m.osc.fade(0, 0.2);
+      }, duration - 50);
+    }
   }
 
-  //draw a keyboard
+   m.draw = function() {
+    //if we are autoplaying and it's time of the next note
 
-  //the width for each key
-  var w = width / notes.length;
-  for (var i = 0; i < notes.length; i++) {
-    var x = i * w;
-    // If the mouse is over the key
-    if (mouseX > x && mouseX < x + w && mouseY < height) {
-      // If we're clicking
-      if (mouseIsPressed) {
-        fill(100,255,200);
-        // Or just rolling over
+    if (m.autoplay && m.millis() > m.trigger) {
+      m.playNote(this.m.notes[m.song[m.index].note], this.m.song[m.index].duration);
+      trigger = m.millis() + m.song[m.index].duration;
+      //move to the next note
+      m.index++;
+    } else if (m.index >= m.song.length) {
+      autoplay = false;
+    }
+
+    //draw a keyboard
+
+    //the width for each key
+    var w = m.width / this.notes.length;
+    for (var i = 0; i < this.notes.length; i++) {
+      var x = i * w;
+      // If the mouse is over the key
+      if (m.mouseX > x && m.mouseX < x + w && m.mouseY < m.height) {
+        // If we're clicking
+        if (m.mouseIsPressed) {
+          m.fill(100, 255, 200);
+          // Or just rolling over
+        } else {
+          m.fill(127);
+        }
       } else {
-        fill(127);
+        m.fill(200);
       }
-    } else {
-      fill(200);
+
+      // Oh if we're playing teh song, let's highlight it too
+      if (m.autoplay && i === m.song[m.index - 1].note) {
+        m.fill(100, 255, 200);
+      }
+      // Draw the key
+      m.rect(x, 0, w - 1, m.height - 1);
     }
 
-    // Oh if we're playing teh song, let's highlight it too
-    if (autoplay && i === song[index-1].note) {
-      fill(100,255,200);
-    }
-    // Draw the key
-    rect(x, 0, w-1, height-1);
   }
-
-}
 
 // When we click
-function mousePressed() {
-  // Map mouse to the key index
-  var key = floor(map(mouseX, 0, width, 0, notes.length));
-  playNote(notes[key]);
-}
+   m.mousePressed = function() {
+    // Map mouse to the key index
+    m.key = m.floor(m.map(m.mouseX, 0, m.width, 0, m.notes.length));
+    m.playNote(notes[key]);
+  }
 
 // Fade it out when we release
-function mouseReleased() {
-  osc.fade(0,0.5);
+  m.mouseReleased=function() {
+    m.osc.fade(0, 0.5);
+  }
+
+
 }
 
-
+var soundsP5 =  new p5(sounds, 'htmlSounds');
